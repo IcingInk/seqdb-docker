@@ -1,8 +1,9 @@
-#
+# junk-files
 *.txt
 *.swp
+*~
+
 # mysql directories
-mysql_autoload/seqdb_genotyping225.sql
 mysql_conf.d
 mysql_datadir
 mysql_shr
@@ -11,12 +12,9 @@ mysql_shr
 srv/logs/*log
 srv/logs/*txt
 
-# the seqdbweb.war
-srv/releases/seqdbweb.war
+# the seqdbweb.war and sql-file
+#srv/releases/seqdbweb.war
+#mysql_autoload/seqdb_genotyping225.sql
 
-# Package Files #
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# the 'exploded' war-file
+srv/deployments/seqdbweb/
