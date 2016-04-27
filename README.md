@@ -1,5 +1,10 @@
 # dw-seqdb
-Going from vagrant ( dev  - https://bitbucket.org/aafc-mbb/seqdb-vagrant ) to docker. <br>
+work-in-progress <br>
+Going from a vagrant-packaging ( dev  - https://bitbucket.org/aafc-mbb/seqdb-vagrant ) to docker-packaging. <br>
+NB: 2 files are missing <br>
+1. seqdbweb.war
+2. sql-dump
+
 ## java
 Oracle , version 8 <br>
 ## database
