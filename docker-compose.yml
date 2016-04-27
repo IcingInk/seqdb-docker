@@ -1,11 +1,11 @@
-fs_tomcat:
+fs.tomcat:
   image: tianon/true
   volumes:
     - ./srv/releases:/opt/tomcat/releases
     - ./srv/logs:/opt/tomcat/logs
     - ./srv/deployments:/opt/tomcat/webapps
 
-fs_db:
+fs.db:
   image: tianon/true
   volumes:
     - ./mysql_datadir:/var/lib/mysql:z
@@ -21,13 +21,26 @@ db:
     - MYSQL_USER=naturalist
     - MYSQL_PASSWORD=passw0rd12
   volumes_from:
-    - fs_db
+    - fs.db
 
 tomcat:
-  build: tomcat 
+  build: tomcat
+  environment:
+    - VIRTUAL_HOST=seqdb.local
+  labels:
+    - "letsencrypt.nocert=true"
   ports:
     - "8080:8080"
   links:
    - db:db
   volumes_from:
-  - fs_tomcat
+  - fs.tomcat
+
+proxy:
+#  image: eforce21/letsencrypt-nginx-proxy
+  image: jwilder/nginx-proxy
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
