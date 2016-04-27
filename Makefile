@@ -1,6 +1,5 @@
 all: build-tomcat up
-build-tomcat:
-	docker-compose build tomcat
+
 up:
 	docker-compose up -d
 
