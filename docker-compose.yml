@@ -3,7 +3,7 @@ fs.tomcat:
   volumes:
     - ./srv/releases:/opt/tomcat/releases
     - ./srv/logs:/opt/tomcat/logs
-    - ./srv/deployments:/opt/tomcat/webapps
+    #- ./srv/deployments:/opt/tomcat/webapps
 
 fs.db:
   image: tianon/true
