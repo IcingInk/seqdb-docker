@@ -21,3 +21,7 @@ stop:
 	docker-compose stop
 rm:
 	docker-compose rm -vf
+
+rm-logs:
+	rm -f srv/logs/*.log
+	rm -f srv/logs/*.txt
