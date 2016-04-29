@@ -13,8 +13,8 @@ srv/logs/*log
 srv/logs/*txt
 
 # the seqdbweb.war and sql-file
-#srv/releases/seqdbweb.war
-#mysql_autoload/seqdb_genotyping225.sql
+srv/releases/seqdbweb.war
+mysql_autoload/seqdb_genotyping225.sql
 
 # the 'exploded' war-file
 srv/deployments/seqdbweb/
