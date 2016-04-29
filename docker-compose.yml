@@ -27,8 +27,8 @@ tomcat:
   build: tomcat
   environment:
     - VIRTUAL_HOST=seqdb.local
-  labels:
-    - "letsencrypt.nocert=true"
+  #labels:
+  #  - "letsencrypt.nocert=true"
   ports:
     - "8080:8080"
   links:
