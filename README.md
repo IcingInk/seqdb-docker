@@ -2,15 +2,13 @@
 work-in-progress <br>
 Going from a vagrant-packaging ( dev  - https://bitbucket.org/aafc-mbb/seqdb-vagrant ) to docker-packaging. <br>
 
-**NB: 2 files are missing <br>**
-
-1. seqdbweb.war, should  'mysql_autoload'-directory
-2. sql-dump, should be placed in the 'srv/deployments'-directory
-
 ## run
-place the war-file and the sql-file in appropriate directories. <br>
-type 'make' <br>
-opens up the application in firefox by 'http://localhost:8080/seqdbweb/ ' <br>
+To download the following files
+1. seqdbweb.war 
+2. sql-dump
+Run the target 'dl-seqdb' <br>
+The seqdbweb.war is placed in the 'srv/release', to deploy you have to log into the tomcat-container and deploy that war-fiel.
+Run the target  'make' <br>
 login with Admin/Admin
 
 # Environment
