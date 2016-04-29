@@ -4,8 +4,10 @@ Going from a vagrant-packaging ( dev  - https://bitbucket.org/aafc-mbb/seqdb-vag
 
 ## run
 To download the following files
+
 1. seqdbweb.war 
 2. sql-dump
+
 Run the target 'dl-seqdb' <br>
 The seqdbweb.war is placed in the 'srv/release', to deploy you have to log into the tomcat-container and deploy that war-fiel.
 Run the target  'make' <br>
