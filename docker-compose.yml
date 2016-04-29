@@ -1,3 +1,8 @@
+fs.proxy:
+  image: tianon/true
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+
 fs.tomcat:
   image: tianon/true
   volumes:
@@ -26,21 +31,22 @@ db:
 tomcat:
   build: tomcat
   environment:
-    - VIRTUAL_HOST=seqdb.local
+    - VIRTUAL_HOST=seqdb.dina-web.local
   #labels:
   #  - "letsencrypt.nocert=true"
-  ports:
-    - "8080:8080"
+  #ports:
+  #  - "8080:8080"
   links:
    - db:db
   volumes_from:
   - fs.tomcat
 
 proxy:
-#  image: eforce21/letsencrypt-nginx-proxy
-  image: jwilder/nginx-proxy
+  image: eforce21/letsencrypt-nginx-proxy
+#  image: jwilder/nginx-proxy
   ports:
     - "80:80"
     - "443:443"
-  volumes:
-    - /var/run/docker.sock:/tmp/docker.sock:ro
+  volumes_from:
+    - fs.proxy
+  

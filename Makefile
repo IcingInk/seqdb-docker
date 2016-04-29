@@ -5,7 +5,7 @@ build:
 up:
 	docker-compose up -d
 	@echo "opening the app, please remember to add seqdb.local to /etc/hosts"
-	#firefox http://seqdb.local/seqdbweb/ &
+	#firefox http://seqdb.dina-web.local/seqdbweb/ &
 
 dl-seqdb:
 	wget https://archive.org/download/seqdb/seqdb.tgz
