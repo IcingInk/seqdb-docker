@@ -14,10 +14,10 @@ Run the target  'make' <br>
 login with Admin/Admin
 
 # Environment
-## java
-Oracle , version 8 <br>
-## database
-mysql, version 5.6 <br>
-## tomcat
+## Java
+Oracle-Java , version 8 <br>
+## DB
+MySQL, version 5.6 <br>
+## Apache Tomcat
 version 7.0.69 <br>
 
