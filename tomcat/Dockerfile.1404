@@ -1,5 +1,4 @@
-#FROM ubuntu:14.04
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 
 
 # Update Ubuntu
@@ -43,8 +42,6 @@ rm -rf /opt/tomcat/webapps/docs && \
 rm -rf /opt/tomcat/webapps/ROOT
 
 # Add admin/admin user
-ADD catalina.sh /opt/tomcat/bin/
-RUN chmod 755 /opt/tomcat/bin/catalina.sh
 ADD tomcat-users.xml /opt/tomcat/conf/
 ADD context.xml /opt/tomcat/conf/
 ADD server.xml /opt/tomcat/conf/
