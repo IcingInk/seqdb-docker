@@ -4,7 +4,7 @@
 
 * database-url 
 * username/password
-* JNDI-name (jdbc/SeqDBWeb)
+* JNDI-name is fixed to ='jdbc/SeqDBWeb'
 
 ## server.xml-file
 
@@ -14,11 +14,12 @@
 
 ## tomcat-users.xml
 
-* roles , username/password
+* roles + username/password
 
 ## jar
 javax.mail.jar-file, included
 
 ## war
-The seqdbweb.war is fetched
+The seqdbweb.war is fetched <br>
+see the ../Makefile <br>
 
