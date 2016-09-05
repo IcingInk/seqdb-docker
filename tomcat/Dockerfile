@@ -1,6 +1,4 @@
-#FROM ubuntu:14.04
 FROM ubuntu:16.04
-
 
 # Update Ubuntu
 RUN apt-get update && apt-get -y upgrade
@@ -33,8 +31,10 @@ RUN chmod 777 /seqdb_working/seqdbweb
 RUN chmod 777 /seqdb_working/sanger_sequences
 RUN chmod 777 /seqdb_working/sanger_fragments
 
+#https://archive.apache.org/dist/tomcat/tomcat-7
 ENV TOMCAT_VERSION 7.0.69
-RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+#RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+RUN wget --quiet --no-cookies https://archive.apache.org/dist/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
 rm /tmp/tomcat.tgz && \
