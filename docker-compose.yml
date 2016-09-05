@@ -1,8 +1,3 @@
-fs.proxy:
-  image: tianon/true
-  volumes:
-    - /var/run/docker.sock:/tmp/docker.sock:ro
-
 fs.tomcat:
   image: tianon/true
   volumes:
@@ -13,10 +8,10 @@ fs.tomcat:
 fs.db:
   image: tianon/true
   volumes:
-    - ./mysql_datadir:/var/lib/mysql:z
-    - ./mysql_shr:/shr:z
+    - ./mysql_datadir:/var/lib/mysql
+    - ./mysql_shr:/shr
     - ./mysql_autoload:/docker-entrypoint-initdb.d:ro
-    - ./mysql_conf.d:/etc/mysql/conf.d:z
+    - ./mysql_conf.d:/etc/mysql/conf.d
 db:
   image: mysql:5.6
   environment:
@@ -31,22 +26,10 @@ db:
 tomcat:
   build: tomcat
   environment:
-    - VIRTUAL_HOST=seqdb.dina-web.local
-  #labels:
-  #  - "letsencrypt.nocert=true"
-  #ports:
-  #  - "8080:8080"
+    - VIRTUAL_HOST=seqdb.nrm.se
+    - VIRTUAL_PORT=8080
   links:
    - db:db
   volumes_from:
   - fs.tomcat
 
-proxy:
-  image: eforce21/letsencrypt-nginx-proxy
-#  image: jwilder/nginx-proxy
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes_from:
-    - fs.proxy
-  
