@@ -4,8 +4,8 @@ build:
 	docker-compose build tomcat
 up:
 	docker-compose up -d
-	@echo "opening the app, please remember to add seqdb.local to /etc/hosts"
-	#firefox http://seqdb.dina-web.local/seqdbweb/ &
+	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
+	firefox http://seqdb.nrm.se/seqdbweb/ &
 
 dl-seqdb:
 	wget https://archive.org/download/seqdb/seqdb.tgz
