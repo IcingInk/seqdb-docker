@@ -1,22 +1,27 @@
-all: dl-seqdb build up
+ME=$(USER)
+DOCKERHUB_VER=v0.5
 
-build:
-	docker-compose build tomcat
+all: up
+
+fetch:
+	@echo "Getting the artifact from IA, the tar contains war-file and sql-dump"
+	./get_seqdb.sh
+
+build: fetch
+	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
+
+release:
+	docker push  dina/seqdb:${DOCKERHUB_VER}
+
 up:
 	@echo "dependent on DINA-WEB/proxy-docker running with appropriate certs .... "	
 	docker-compose up -d
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 	firefox http://seqdb.nrm.se/seqdbweb/ &
 
-dl-seqdb:
-	wget https://archive.org/download/seqdb/seqdb.tgz
-	tar xvfz seqdb.tgz
-	cp seqdb/seqdbweb.war srv/releases
-	cp seqdb/seqdb_genotyping225.sql srv/releases
-	cp srv/releases/seqdbweb.war tomcat
-	cp srv/releases/seqdb_genotyping225.sql mysql_autoload
-	rm -rf seqdb
-	#rm seqdb.tgz
+
+ps:
+	docker-compose ps
 
 clean: stop rm rm-logs
 

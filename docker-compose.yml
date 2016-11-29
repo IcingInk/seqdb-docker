@@ -19,7 +19,8 @@ db:
     - fs.db
 
 tomcat:
-  build: tomcat
+  #build: tomcat
+  image: dina/seqdb:v0.5
   environment:
     - VIRTUAL_HOST=seqdb.nrm.se
     - VIRTUAL_PORT=8080
