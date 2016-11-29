@@ -12,6 +12,7 @@ fs.db:
     - ./mysql_shr:/shr
     - ./mysql_autoload:/docker-entrypoint-initdb.d:ro
     - ./mysql_conf.d:/etc/mysql/conf.d
+
 db:
   image: mysql:5.6
   env_file: .env
