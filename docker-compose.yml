@@ -1,9 +1,7 @@
 fs.tomcat:
   image: tianon/true
   volumes:
-    - ./srv/releases:/opt/tomcat/releases
     - ./srv/logs:/opt/tomcat/logs
-    #- ./srv/deployments:/opt/tomcat/webapps
 
 fs.db:
   image: tianon/true
@@ -20,8 +18,7 @@ db:
     - fs.db
 
 tomcat:
-  #build: tomcat
-  image: dina/seqdb:v0.5
+  image: dina/seqdb:v0.6
   environment:
     - VIRTUAL_HOST=seqdb.nrm.se
     - VIRTUAL_PORT=8080
