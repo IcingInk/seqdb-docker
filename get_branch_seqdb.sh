@@ -3,6 +3,7 @@
 FILE=seqdb_3.5_SNAPSHOT_geno_branch.zip
 SRC=https://archive.org/download/seqdb_3.5_SNAPSHOT_geno_branch/${FILE}
 DST=customization
+
 FILE_WAR=seqdb.web-3.5-SNAPSHOT.war
 FILE_SQL=seqdb_3.5_SNAPSHOT_genotyping.sql
 
