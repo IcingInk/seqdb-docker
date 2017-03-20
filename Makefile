@@ -16,23 +16,15 @@ fetch-wait:
 		https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
 		chmod +x wait-for-it.sh
 
-build: fetch
-	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
-
-release:
-	docker push  dina/seqdb:${DOCKERHUB_VER}
-
-
-up:
+up: build
 	docker-compose up -d db 
 	sleep 4
 	docker-compose up -d tomcat
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 	firefox http://seqdb.nrm.se/seqdbweb/ &
 
-
-ps:
-	docker-compose ps
+down:
+	@docker-compose down
 
 clean: stop rm rm-logs
 
@@ -44,3 +36,10 @@ rm:
 rm-logs:
 	rm -f srv/logs/*.log
 	rm -f srv/logs/*.txt
+
+
+build: fetch
+	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
+
+release:
+	docker push  dina/seqdb:${DOCKERHUB_VER}
