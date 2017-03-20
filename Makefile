@@ -1,14 +1,14 @@
 ME=$(USER)
-DOCKERHUB_VER=v0.6
 
+DOCKERHUB_VER=v0.6
 DST=customization
 
 all: up
 
 fetch:
 	@echo "Getting the artifact from IA, the tar contains war-file and sql-dump"
+	./get_20170309_seqdb.sh	
 	#./get_seqdb.sh
-	./get_branch_seqdb.sh
 
 fetch-wait:
 	@echo "fetching the wait-for-it.sh"
