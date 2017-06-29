@@ -2,7 +2,10 @@
 *.txt
 *.swp
 *~
+
+# editing the md-files in rStudio
 *html
+.Rhistory
 
 # mysql directories
 mysql_conf.d
