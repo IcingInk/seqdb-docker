@@ -19,8 +19,8 @@ db:
 
 tomcat:
   image: dina/seqdb:v0.8
-  ports:
-    - "8080:8080" # http://localhost:8080/seqdb.web-3.8/login.jsp
+  #ports:
+  #  - "8080:8080" # http://localhost:8080/seqdb.web-3.8/login.jsp
   environment:
     - VIRTUAL_HOST=seqdb.nrm.se
   links:
