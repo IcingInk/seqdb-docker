@@ -15,7 +15,7 @@ fetch-wait:
 		https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
 		chmod +x wait-for-it.sh
 
-up: 
+up: fetch
 	docker-compose up -d db 
 	sleep 4
 	docker-compose up -d tomcat
