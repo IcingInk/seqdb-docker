@@ -7,8 +7,7 @@ all: up
 
 fetch:
 	@echo "Getting the artifact from IA, the tar contains war-file and sql-dump"
-	#./get_20170309_seqdb.sh
-	#./get_seqdb.sh
+	./getVersion3.8.sh
 
 fetch-wait:
 	@echo "fetching the wait-for-it.sh"
@@ -43,12 +42,8 @@ rm-logs:
 	rm -f srv/logs/*.log
 	rm -f srv/logs/*.txt
 
-
-#build: fetch
-#	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
-
-build: 
-	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
+build: fetch
+  @docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
 
 release:
 	docker push  dina/seqdb:${DOCKERHUB_VER}
