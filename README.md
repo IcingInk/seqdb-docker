@@ -1,3 +1,6 @@
+# pre-req:
+install latest docker and docker-compose from https://www.docker.com
+
 # dw-seqdb
 work-in-progress <br>
 Going from a vagrant-packaging ( dev  - https://bitbucket.org/aafc-mbb/seqdb-vagrant ) to docker-packaging. <br>
