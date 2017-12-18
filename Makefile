@@ -1,6 +1,6 @@
 ME=$(USER)
 
-DOCKERHUB_VER=v0.8
+DOCKERHUB_VER=v3.8
 DST=customization
 
 all: up
@@ -15,7 +15,8 @@ fetch-wait:
 		https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
 		chmod +x wait-for-it.sh
 
-up: fetch
+#up: fetch
+up: 
 	docker-compose up -d db 
 	sleep 4
 	docker-compose up -d tomcat
