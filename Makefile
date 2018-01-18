@@ -1,13 +1,14 @@
 ME=$(USER)
 
-DOCKERHUB_VER=v3.8
+VER=3.15
+DOCKERHUB_VER=v3.15
 DST=customization
 
 all: up
 
 fetch:
 	@echo "Getting the artifact from IA, the tar contains war-file and sql-dump"
-	./getVersion3.8.sh
+	./getVersion${VER}.sh
 
 fetch-wait:
 	@echo "fetching the wait-for-it.sh"
@@ -43,7 +44,7 @@ rm-logs:
 	rm -f srv/logs/*.log
 	rm -f srv/logs/*.txt
 
-build: fetch
+build: 
   @docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
 
 release:
