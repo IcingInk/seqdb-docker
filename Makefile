@@ -1,3 +1,4 @@
+#! make
 ME=$(USER)
 
 VER=3.15
@@ -24,14 +25,9 @@ up:
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
 # context-path, https://seqdb.nrm.se/seqdb.web-3.8/ , is the same as the war-file (seqdb.web-3.8.war)
+
 test:
-	firefox http://seqdb.nrm.se/seqdbweb/ &
-
-test2:
-	firefox http://localhost:8080/seqdb.web-3.8/login.jsp
-
-down:
-	@docker-compose down
+	curl https://seqdb.nrm.se/seqdb.web-3.15/login.jsp
 
 clean: stop rm rm-logs
 
