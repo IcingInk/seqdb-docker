@@ -7,7 +7,7 @@ fs.db:
   image: tianon/true
   volumes:
     - ./mysql_datadir:/var/lib/mysql
-    - ./mysql_shr:/shr
+    #- ./mysql_shr:/shr
     - ./mysql_autoload:/docker-entrypoint-initdb.d:ro
     - ./mysql_conf.d:/etc/mysql/conf.d
 
@@ -19,11 +19,8 @@ db:
 
 tomcat:
   image: dina/seqdb:v3.15
-  #image: dina/seqdb:v3.8
-  #ports:
-  #  - "8080:8080" # http://localhost:8080/seqdb.web-3.8/login.jsp
   environment:
-    - VIRTUAL_HOST=seqdb.dina-web.net
+    - VIRTUAL_HOST=seqdb.nrm.se
   links:
    - db:db
   volumes_from:
