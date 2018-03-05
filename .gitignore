@@ -2,6 +2,7 @@
 *.txt
 *.swp
 *~
+*lock*
 
 # editing the md-files in rStudio
 *html
@@ -18,7 +19,7 @@ srv/logs/*txt
 
 # the seqdbweb.war and sql-file
 tomcat/*.war
-mysql_autoload/*.sql
+#mysql_autoload/*.sql
 customization/*zip
 customization/*sql
 customization/*war
