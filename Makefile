@@ -1,8 +1,8 @@
 #! make
 ME=$(USER)
 
-VER=3.15
-DOCKERHUB_VER=v3.15
+#VER=3.15
+DOCKERHUB_VER=v3.16
 DST=customization
 
 all: up
@@ -27,7 +27,7 @@ up:
 # context-path, https://seqdb.nrm.se/seqdb.web-3.8/ , is the same as the war-file (seqdb.web-3.8.war)
 
 test:
-	curl https://seqdb.nrm.se/seqdb.web-3.15/login.jsp
+	curl -L http://seqdb.nrm.se/seqdb.web-3.16/login.jsp
 
 clean: stop rm rm-logs
 
@@ -41,7 +41,7 @@ rm-logs:
 	rm -f srv/logs/*.txt
 
 build: 
-  @docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
+	@docker build -t dina/seqdb:${DOCKERHUB_VER} tomcat
 
 release:
 	docker push  dina/seqdb:${DOCKERHUB_VER}
