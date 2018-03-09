@@ -44,7 +44,8 @@ RUN chmod -R 777 /var/lib/seqdb/
 # end: new directories from 2017-02-13
 
 #https://archive.apache.org/dist/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.69
+#ENV TOMCAT_VERSION 7.0.69
+ENV TOMCAT_VERSION 7.0.76
 RUN wget --quiet --no-cookies https://archive.apache.org/dist/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
@@ -60,9 +61,8 @@ ADD tomcat-users.xml /opt/tomcat/conf/
 ADD context.xml /opt/tomcat/conf/
 ADD server.xml /opt/tomcat/conf/
 ADD javax.mail.jar /opt/tomcat/lib/
-#ADD seqdbweb.war /opt/tomcat/webapps
-# Adding latest release from early 2017
-ADD seqdb.web-3.15.war /opt/tomcat/webapps
+# Adding latest release from: 2018-02-08
+ADD seqdb.web-3.17.war /opt/tomcat/webapps
 
 
 ENV CATALINA_HOME /opt/tomcat
