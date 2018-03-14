@@ -13,6 +13,9 @@
 mysql_datadir
 mysql_shr
 
+# passwords
+.env
+
 # log-files
 srv/logs/*log
 srv/logs/*txt
