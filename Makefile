@@ -24,10 +24,8 @@ up:
 	docker-compose up -d tomcat
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
-# context-path, https://seqdb.nrm.se/seqdb.web-3.8/ , is the same as the war-file (seqdb.web-3.8.war)
-
 test:
-	curl -L http://seqdb.nrm.se/seqdb.web-3.16/login.jsp
+	curl -L http://seqdb.nrm.se/seqdb.web-3.17/login.jsp
 
 clean: stop rm rm-logs
 
