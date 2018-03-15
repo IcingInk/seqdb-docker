@@ -18,7 +18,7 @@ db:
     - fs.db
 
 tomcat:
-  image: dina/seqdb:v3.17
+  image: dina/seqdb:v3.18
   ports:
     - "8080:8080"
   environment:

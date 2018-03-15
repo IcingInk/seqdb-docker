@@ -2,7 +2,7 @@
 ME=$(USER)
 
 #VER=3.15
-DOCKERHUB_VER=v3.17
+DOCKERHUB_VER=v3.18
 DST=customization
 
 all: up
@@ -25,7 +25,7 @@ up:
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
 test:
-	curl -L http://seqdb.nrm.se/seqdb.web-3.17/login.jsp
+	curl -L http://seqdb.nrm.se/seqdb.web-3.18/login.jsp
 
 clean: stop rm rm-logs
 
