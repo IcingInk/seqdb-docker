@@ -24,8 +24,11 @@ up:
 	docker-compose up -d tomcat
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
-test:
+test-curl:
 	curl -L http://seqdb.nrm.se/seqdb.web-3.189/login.jsp
+
+test-browse:
+	xdg-open http://seqdb.nrm.se/seqdb.web-3.189/login.jsp
 
 clean: stop rm rm-logs
 
