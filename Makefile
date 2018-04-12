@@ -1,5 +1,7 @@
 #! make
 ME=$(USER)
+include .env
+TS := $(shell date '+%Y_%m_%d_%H_%M')
 
 #VER=3.15
 DOCKERHUB_VER=v3.189
@@ -53,6 +55,10 @@ build:
 
 release:
 	docker push  dina/seqdb:${DOCKERHUB_VER}
+
+
+db-dump:
+	@docker exec shared_seqdb_database sh -c 'exec mysqldump ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}' > ./db-backup/${MYSQL_DATABASE}_${TS}.sql
 
 
 # docker exec -it seqdbdocker_tomcat_1 bash
