@@ -62,7 +62,7 @@ ADD context.xml /opt/tomcat/conf/
 ADD server.xml /opt/tomcat/conf/
 ADD javax.mail.jar /opt/tomcat/lib/
 # Adding latest release from: 2018-02-08
-ADD seqdb.web-3.17.war /opt/tomcat/webapps
+ADD seqdb.web-3.189.war /opt/tomcat/webapps
 
 
 ENV CATALINA_HOME /opt/tomcat
