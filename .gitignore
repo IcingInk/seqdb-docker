@@ -9,9 +9,11 @@
 .Rhistory
 
 # mysql directories
-#mysql_conf.d
 mysql_datadir
 mysql_shr
+
+# db-backup
+db-backup/**
 
 # passwords
 .env
