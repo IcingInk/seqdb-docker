@@ -19,9 +19,16 @@ fetch-wait:
 
 #up: fetch
 up: 
+	@echo "Obs, you need to run a proxy"
 	docker-compose up -d db 
 	sleep 4
 	docker-compose up -d tomcat
+
+up-dev:
+	@echo "Obs, you need to run a proxy"
+	docker-compose -f docker-compose.dev.yml up -d db 
+	sleep 4
+	docker-compose -f docker-compose.dev.yml up -d tomcat 
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
 test-curl:
