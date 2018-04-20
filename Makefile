@@ -59,7 +59,3 @@ release:
 
 db-dump:
 	@docker exec shared_seqdb_database sh -c 'exec mysqldump ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}' > ./db-backup/${MYSQL_DATABASE}_${TS}.sql
-
-
-# docker exec -it seqdbdocker_tomcat_1 bash
-# docker exec -it seqdbdocker_db_1 mysql -u brf -p
