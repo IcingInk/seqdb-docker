@@ -13,15 +13,14 @@ db:
   image: mysql:5.6
   container_name: shared_seqdb_database
   env_file: .env
-  #ports:
-  # - 3306:3306
+  ports:
+   - 13306:3306
   volumes_from:
     - fs.db
 
 tomcat:
   image: dina/seqdb:v3.189
-  ports:
-    - "8080:8080"
+  env_file: .env
   environment:
     - VIRTUAL_HOST=seqdb.nrm.se
     - VIRTUAL_PORT=8080
