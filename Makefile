@@ -21,7 +21,7 @@ test-curl:
 	curl -L http://seqdb-dev.nrm.se/seqdb.web-${TAG}/login.jsp 
 
 test-browse:
-	xdg-open https://seqdb-dev.nrm.se/seqdb.web-nrm-3.18/login.jsp &
+	xdg-open https://seqdb-dev.nrm.se/seqdb.web-${TAG}/login.jsp &
 
 clean: stop rm rm-logs
 
