@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 LABEL version="3.18.1"
 LABEL release-date="2018-04-26"
 LABEL description.feature="feature of war, import of 'tube id' for sample-file"
-LABEL description.java="local build of war, Built openjdk version '1.8.0_151'"
+LABEL description.java="local build of war, using openjdk version '1.8.0_151'"
 
 
 # Update Ubuntu
