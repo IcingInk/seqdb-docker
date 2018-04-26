@@ -16,8 +16,7 @@ mysql_shr
 db-backup/**
 
 # passwords
-.env
-.env*
+env/**
 
 # log-files
 *log
