@@ -1,4 +1,9 @@
 FROM ubuntu:16.04
+LABEL version="3.18.1"
+LABEL release-date="2018-04-26"
+LABEL description.feature="feature of war, import of 'tube id' for sample-file"
+LABEL description.java="local build of war, Built openjdk version '1.8.0_151'"
+
 
 # Update Ubuntu
 RUN apt-get update && apt-get -y upgrade
@@ -14,18 +19,16 @@ RUN apt-get --force-yes install oracle-java8-installer -y
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # for the brady printer (sentinel_share)
-RUN mkdir -p /mnt/sentinel_share
-
-# start: new directories from 2017-02-13
-RUN mkdir -p \
-/mnt/sentinel_share/container_jobs \
-/mnt/sentinel_share/labels \
-/mnt/sentinel_share/mixed_specimen_jobs \
-/mnt/sentinel_share/primer_jobs \ 
-/mnt/sentinel_share/product_jobs \
-/mnt/sentinel_share/sample_jobs \
-/mnt/sentinel_share/specimen_jobs \
-/mnt/sentinel_share/storage_jobs
+#RUN mkdir -p /mnt/sentinel_share
+#RUN mkdir -p \
+#/mnt/sentinel_share/container_jobs \
+#/mnt/sentinel_share/labels \
+#/mnt/sentinel_share/mixed_specimen_jobs \
+#/mnt/sentinel_share/primer_jobs \ 
+#/mnt/sentinel_share/product_jobs \
+#/mnt/sentinel_share/sample_jobs \
+#/mnt/sentinel_share/specimen_jobs \
+#/mnt/sentinel_share/storage_jobs
 
 RUN mkdir -p \
 /var/lib/seqdb \
@@ -41,10 +44,7 @@ RUN mkdir -p \
 
 RUN chmod -R 777 /var/lib/seqdb/
 
-# end: new directories from 2017-02-13
-
 #https://archive.apache.org/dist/tomcat/tomcat-7
-#ENV TOMCAT_VERSION 7.0.69
 ENV TOMCAT_VERSION 7.0.76
 RUN wget --quiet --no-cookies https://archive.apache.org/dist/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
@@ -61,9 +61,7 @@ ADD tomcat-users.xml /opt/tomcat/conf/
 ADD context.xml /opt/tomcat/conf/
 ADD server.xml /opt/tomcat/conf/
 ADD javax.mail.jar /opt/tomcat/lib/
-# Adding latest release from: 2018-02-08
-ADD seqdb.web-3.189.war /opt/tomcat/webapps
-
+ADD seqdb.web-3.18.1.war /opt/tomcat/webapps
 
 ENV CATALINA_HOME /opt/tomcat
 ENV PATH $PATH:$CATALINA_HOME/bin
