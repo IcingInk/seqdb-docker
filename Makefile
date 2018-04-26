@@ -1,9 +1,6 @@
 #! make
 ME=$(USER)
 include .env
-include .envDocker
-
-TS := $(shell date '+%Y_%m_%d_%H_%M')
 
 all: up
 
@@ -12,6 +9,7 @@ up:
 	docker-compose up -d db 
 	sleep 4
 	docker-compose up -d tomcat
+
 up-dev:
 	@echo "Obs, you need to run a proxy"
 	docker-compose -f docker-compose.dev.yml up -d db 
@@ -20,10 +18,10 @@ up-dev:
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
 test-curl:
-	curl -L http://seqdb.nrm.se/seqdb.web-3.19/login.jsp 
+	curl -L http://seqdb-dev.nrm.se/seqdb.web-${TAG}/login.jsp 
 
 test-browse:
-	xdg-open http://seqdb.nrm.se/seqdb.web-3.19/login.jsp &
+	xdg-open https://seqdb-dev.nrm.se/seqdb.web-nrm-3.18/login.jsp &
 
 clean: stop rm rm-logs
 
@@ -38,12 +36,12 @@ rm-logs:
 	rm -f srv/logs/*.txt
 
 build: 
-	@docker build -t ${IMAGE}:${TAG} tomcat
+	@docker build -t ${IMAGE}:v${TAG} tomcat --no-cache
 
 release:
-	docker push ${IMAGE}:${TAG}
+	docker push ${IMAGE}:v${TAG}
 
-
+TS := $(shell date '+%Y_%m_%d_%H_%M')
 db-dump:
 	@docker exec shared_seqdb_database sh -c 'exec mysqldump ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}' > ./db-backup/${MYSQL_DATABASE}_${TS}.sql
 
