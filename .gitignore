@@ -17,8 +17,10 @@ db-backup/**
 
 # passwords
 .env
+.env*
 
 # log-files
+*log
 srv/logs/*log
 srv/logs/*txt
 
