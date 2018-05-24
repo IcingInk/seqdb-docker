@@ -14,11 +14,12 @@ up:
 	docker-compose up -d tomcat
 
 up-dev:
-	@echo "Obs, you need to run a proxy"
-	docker-compose -f docker-compose.dev.yml up -d db 
+	docker-compose -f docker-compose.dev_v3.yml up -d proxy
 	sleep 4
-	docker-compose -f docker-compose.dev.yml up -d tomcat 
-	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
+	docker-compose -f docker-compose.dev_v3.yml up -d db 
+	sleep 4
+	docker-compose -f docker-compose.dev_v3.yml up -d tomcat 
+	@echo "If running locally,  remember to add seqdb.nrm.se to /etc/hosts"
 
 test-curl:
 	curl -L http://seqdb.nrm.se/seqdb.web-${TAG}/login.js
