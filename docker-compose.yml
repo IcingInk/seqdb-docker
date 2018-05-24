@@ -8,6 +8,7 @@ fs.db:
   volumes:
     - ./mysql_datadir:/var/lib/mysql
     - ./mysql_autoload:/docker-entrypoint-initdb.d:ro
+    - ./mysql_conf.d:/etc/mysql/conf.d
 
 db:
   image: mysql:5.6
