@@ -21,15 +21,16 @@ up-dev:
 	@echo "If running locally, please remember to add seqdb.nrm.se to /etc/hosts"
 
 test-curl:
-	curl -L http://seqdb-dev.nrm.se/seqdb.web-${TAG}/login.js
+	curl -L http://seqdb.nrm.se/seqdb.web-${TAG}/login.js
 
 test-browse:
-	xdg-open https://seqdb-dev.nrm.se/seqdb.web-${TAG}/login.jsp &
+	xdg-open https://seqdb.nrm.se/seqdb.web-${TAG}/login.jsp &
 
 clean: stop rm rm-logs
 
 stop:
 	docker-compose stop
+
 rm:
 	docker-compose rm -vf
 
