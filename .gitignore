@@ -22,6 +22,10 @@ env/.env.mysql
 srv/logs/*log
 srv/logs/*txt
 
+# certs
+*.crt
+*.key
+
 # the seqdbweb.war and sql-file
 tomcat/*.war
 #mysql_autoload/*.sql
