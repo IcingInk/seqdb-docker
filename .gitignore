@@ -18,6 +18,8 @@ db-backup/**
 # passwords
 env/.env.mysql
 
+*sql
+
 # log-files
 srv/logs/*log
 srv/logs/*txt
