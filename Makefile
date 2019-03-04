@@ -4,27 +4,18 @@ include .env
 include env/.env.mysql
 TS := $(shell date '+%Y_%m_%d_%H_%M')
 
-
 all: up
 
 up: 
 	@echo "Obs, you need to run a proxy"
 	docker-compose up -d db 
 	sleep 4
-	docker-compose up -d tomcat
-
-up-dev:
-	docker-compose -f docker-compose.dev_v3.yml up -d proxy
-	sleep 4
-	docker-compose -f docker-compose.dev_v3.yml up -d db 
-	sleep 4
-	docker-compose -f docker-compose.dev_v3.yml up -d tomcat 
-	@echo "If running locally,  remember to add seqdb.nrm.se to /etc/hosts"
+	docker-compose up -d seqdb
 
 test-curl:
 	curl -L http://seqdb.nrm.se/seqdb.web-${TAG}/login.js
 
-test-browse:
+test-browser:
 	xdg-open https://seqdb.nrm.se/seqdb.web-${TAG}/login.jsp &
 
 clean: stop rm rm-logs
