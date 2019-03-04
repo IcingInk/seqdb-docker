@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!-- 20170628 -->
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -140,12 +141,10 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-
-        <Context path="/seqdb_working" docBase="/seqdb_working/"
+        <Context path="/var/lib/seqdb" docBase="/var/lib/seqdb/"
                   reloadable="true" crossContext="true"
                   privileged="true" debug="1" >
         </Context>
-
       </Host>
     </Engine>
   </Service>

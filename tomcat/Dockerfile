@@ -13,27 +13,39 @@ RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean tru
 RUN apt-get --force-yes install oracle-java8-installer -y
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-# from provision-seqdb-localfs.sh
-RUN mkdir -p \
-/seqdb_working/seqdbweb \
-/seqdb_working/specimenfiles \
-/seqdb_working/samplefiles \
-/seqdb_working/pcrbatchfiles \
-/seqdb_working/importpermitfiles \ 
-/seqdb_working/import_page_documentation \
-/seqdb_working/mmtlSubmissions \ 
-/seqdb_working/sanger_sequences \
-/seqdb_working/sanger_fragments
-
+# for the brady printer (sentinel_share)
 RUN mkdir -p /mnt/sentinel_share
 
-RUN chmod 777 /seqdb_working/seqdbweb
-RUN chmod 777 /seqdb_working/sanger_sequences
-RUN chmod 777 /seqdb_working/sanger_fragments
+# start: new directories from 2017-02-13
+RUN mkdir -p \
+/mnt/sentinel_share/container_jobs \
+/mnt/sentinel_share/labels \
+/mnt/sentinel_share/mixed_specimen_jobs \
+/mnt/sentinel_share/primer_jobs \ 
+/mnt/sentinel_share/product_jobs \
+/mnt/sentinel_share/sample_jobs \
+/mnt/sentinel_share/specimen_jobs \
+/mnt/sentinel_share/storage_jobs
+
+RUN mkdir -p \
+/var/lib/seqdb \
+/var/lib/seqdb/specimenfiles \
+/var/lib/seqdb/mixedSpecimenfiles \
+/var/lib/seqdb/samplefiles \
+/var/lib/seqdb/pcrbatchfiles \
+/var/lib/seqdb/importpermitfiles \
+/var/lib/seqdb/import_page_documentation \
+/var/lib/seqdb/mmtlSubmissions \
+/var/lib/seqdb/sanger_sequences \
+/var/lib/seqdb/sanger_fragments
+
+RUN chmod -R 777 /var/lib/seqdb/
+
+# end: new directories from 2017-02-13
 
 #https://archive.apache.org/dist/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.69
-#RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+#ENV TOMCAT_VERSION 7.0.69
+ENV TOMCAT_VERSION 7.0.76
 RUN wget --quiet --no-cookies https://archive.apache.org/dist/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
@@ -49,7 +61,8 @@ ADD tomcat-users.xml /opt/tomcat/conf/
 ADD context.xml /opt/tomcat/conf/
 ADD server.xml /opt/tomcat/conf/
 ADD javax.mail.jar /opt/tomcat/lib/
-ADD seqdbweb.war /opt/tomcat/webapps
+# Adding latest release from: 2018-02-08
+ADD seqdb.web-3.189.war /opt/tomcat/webapps
 
 
 ENV CATALINA_HOME /opt/tomcat

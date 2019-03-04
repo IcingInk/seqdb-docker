@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!-- 20170628 -->
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -16,11 +17,11 @@
   limitations under the License.
 -->
 <!-- The contents of this file will be loaded for each web application -->
-<Context>
+<Context jndiExceptionOnFailedWrite="false">
 
     <!-- Default set of monitored resources -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
-
+	
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
     <Manager pathname="" />
@@ -31,7 +32,8 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
-      <Resource name="jdbc/SeqDBWeb" 
+
+    <Resource name="jdbc/SeqDBWeb" 
                 auth="Container"
                 type="javax.sql.DataSource"
                 maxActive="100"
@@ -39,16 +41,37 @@
                 maxWait="10000"
                 validationQuery="SELECT 1"
                 testOnBorrow="true"
-                username="naturalist" 
-                password="passw0rd12"
+                username="brf" 
+                password="brf" 
                 driverClassName="com.mysql.jdbc.Driver"
-                factory="org.apache.commons.dbcp.BasicDataSourceFactory"
-                url="jdbc:mysql://db/seqdbweb?useUnicode=true&amp;characterEncoding=utf-8"
-  />
+                url="jdbc:mysql://db/seqdbweb?useUnicode=true&amp;characterEncoding=utf-8"/>
 
-
-  <Environment name="config/ldapServer" value="ldap://example" type="java.lang.String"/>
-  <Environment name="config/ldapUserName" value="exampleUserName" type="java.lang.String"/>
-  <Environment name="config/ldapPassword" value="examplePassword" type="java.lang.String"/>
-
+    <Environment name="config/ldapServer" value="ldap://example" type="java.lang.String"/>
+    <Environment name="config/ldapUserName" value="exampleUserName" type="java.lang.String"/>
+    <Environment name="config/ldapPassword" value="examplePassword" type="java.lang.String"/>
+    <Environment name="config/ldapBaseOU" value="ou=example" type="java.lang.String"/>
+    <Environment name="config/ldapSearchParameter" value="exampleParameter" type="java.lang.String"/>
+	<!-- default exampleParameter = (&#038;(sAMAccountName={0})(objectclass=person)) -->
+    
+    <Environment name="config/instanceName" value="Developer Snapshot" type="java.lang.String"/>
+    <Environment name="config/instanceColour" value="red" type="java.lang.String"/>
+    
+    <Environment name="config/storageFolder" value="/var/lib/seqdb" type="java.lang.String"/>
+    
+    <Environment name="config/userDocumentation" value="userDocumentation.html" type="java.lang.String"/>
+    <Environment name="config/contactInfo" value="contacts.html" type="java.lang.String"/>
+    
+    <Resource name="mail/Session" 
+    	auth="Container"
+        type="javax.mail.Session"
+        username=""
+        password=""
+        mail.debug="false"
+        mail.transport.protocol="smtp"
+        mail.smtp.host= "examplehost"
+        mail.smtp.auth= "false"
+        mail.smtp.port= "25"
+        mail.smtp.starttls.enable="false"
+        description="SeqDB E-Mail Resource"
+    />
 </Context>
