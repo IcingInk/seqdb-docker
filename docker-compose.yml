@@ -14,7 +14,8 @@ services:
      - ./mysql_conf.d:/etc/mysql/conf.d
   
   seqdb:
-   image: dina/seqdb:v3.18.1
+   #image: dina/seqdb:v3.18.1
+   image: ${IMAGE}:v${TAG}
    container_name: seqdb
    env_file: .env 
    #ports:
