@@ -2,6 +2,7 @@
 ME=$(USER)
 include .env
 include env/.env.mysql
+TS := $(shell date '+%Y_%m_%d_%H_%M')
 
 all: up
 
@@ -12,10 +13,10 @@ up:
 	docker-compose up -d seqdb
 
 test-curl:
-	curl -L http://seqdb.nrm.se/seqdb.web-${TAG}/login.js
+	curl -L http://seqdb.nrm.se/login.js
 
 test-browser:
-	xdg-open https://seqdb.nrm.se/seqdb.web-${TAG}/login.jsp &
+	xdg-open https://seqdb.nrm.se/login.jsp &
 
 clean: stop rm rm-logs
 
@@ -30,11 +31,20 @@ rm-logs:
 	rm -f srv/logs/*.txt
 
 build: 
-	@docker build -t ${IMAGE}:v${TAG} tomcat --no-cache
+	@docker build --no-cache -t ${IMAGE}:${TAG} -f dockerfile/Dockerfile
+	#docker build --no-cache -t dina/seqdb:v3.28.1 .
+
 
 release:
-	docker push ${IMAGE}:v${TAG}
+	docker push ${IMAGE}:${TAG}
 
 db-dump:
 	@docker exec shared_seqdb_database sh -c 'exec mysqldump ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}' > ./db-backup/${MYSQL_DATABASE}_${TS}.sql
+
+
+## conventient
+# $ docker-compose run --rm seqdb bash
+
+# java -Xmx8g -jar seqdbweb.war -Xmx8g --spring.config.additional-location=./seqdbconfig.yml
+# seqdb-docker$ docker build -t openjdk:ingimar.2 dockerfile
 
