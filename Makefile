@@ -2,7 +2,6 @@
 ME=$(USER)
 include .env
 include env/.env.mysql
-TS := $(shell date '+%Y_%m_%d_%H_%M')
 
 all: up
 
