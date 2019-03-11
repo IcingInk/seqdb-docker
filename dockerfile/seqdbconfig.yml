@@ -1,0 +1,51 @@
+spring:
+  # Creates integration framework tables ***This will drop the current integration tables***
+  integration.jdbc.initialize-schema: always
+#  Leave datasource commented out when passing values as runtime arguments
+  datasource:
+    url: jdbc:mysql://db/seqdbweb?useUnicode=true&amp;characterEncoding=utf-8
+    username: brf
+    password: brf
+  # Admin panel connection info
+  boot.admin.client:
+    url: http://localhost:8081/admin
+    username: admin
+    password: admin
+    instance.metadata:
+      user:
+        name: Admin
+        password: Admin
+
+  mail:
+    protocol: smtp
+    host: smtp.examplehost.com
+    port: 587
+    username: exampleUser
+    password: examplePass
+    from: "Sequence Database <no-reply@seqdb.agr.gc.ca>"
+    properties.mail.smtp.debug: false
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+
+  ldap:
+    urls: exampleServer
+    base: dc=AGR,dc=GC,dc=CA
+    username: exampleUser
+    password: examplePass
+    searchBase: ou=AAFC
+    searchFilter: (&(sAMAccountName={0})(objectclass=person))
+
+instanceName: NRM
+instanceColour: orange
+storageFolder: /var/lib/seqdb/ #/mnt/seqdb
+userDocumentation: https://collab.agr.gc.ca/co/mbb/SitePages/Sequence%20Database%20(SeqDB).aspx
+contactInfo: contacts.html
+
+logging:
+#  Uncomment to enable logging to a file
+  file: /var/lib/seqdb/logs/seqdb.log
+  level:
+    #ignore Hibernate Criteria API deprecation warning logs
+    org.hibernate.orm.deprecation: OFF
+    org.displaytag.filter.ResponseOverrideFilter: OFF
