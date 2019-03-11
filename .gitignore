@@ -18,21 +18,16 @@ db-backup/**
 # passwords
 env/.env.mysql
 
-*sql
 
 # log-files
 srv/logs/*log
 srv/logs/*txt
 
-# certs
-*.crt
-*.key
-
-# the seqdbweb.war and sql-file
+# the seqdbweb.war
 tomcat/*.war
+dockerfile/*.war
 
 #mysql_autoload/*.sql
 customization/*zip
-customization/*sql
 customization/*war
 customization/*xml
