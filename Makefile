@@ -45,7 +45,7 @@ db-import:
 	@docker exec shared_seqdb_database sh -c 'exec mysql  -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}' < ./customization/seqdbweb_2019_03_11_11_13-before_import.sql
 
 
-docker exec shared_seqdb_database sh -c 'exec mysql seqdbweb -ubrf -pbrf' < ./customization/seqdbweb_2019_03_11_11_13-before_import.sql
+# docker exec shared_seqdb_database sh -c 'exec mysql seqdbweb -ubrf -pbrf' < ./customization/seqdbweb_2019_03_11_11_13-before_import.sql
 ## conventient
 # $ docker-compose run --rm seqdb bash
 
