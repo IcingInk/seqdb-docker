@@ -41,10 +41,12 @@ release:
 db-dump:
 	@docker exec shared_seqdb_database sh -c 'exec mysqldump ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}' > ./db-backup/${MYSQL_DATABASE}_${TS}.sql
 
+db-import:
+	@docker exec shared_seqdb_database sh -c 'exec mysql  -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}' < ./customization/seqdbweb_2019_03_11_11_13-before_import.sql
 
+
+docker exec shared_seqdb_database sh -c 'exec mysql seqdbweb -ubrf -pbrf' < ./customization/seqdbweb_2019_03_11_11_13-before_import.sql
 ## conventient
 # $ docker-compose run --rm seqdb bash
 
 # java -Xmx8g -jar seqdbweb.war -Xmx8g --spring.config.additional-location=./seqdbconfig.yml
-# seqdb-docker$ docker build -t openjdk:ingimar.2 dockerfile
-
